@@ -10,5 +10,5 @@ public interface EmployeeDAO {
     List<Employee> findAll() throws SolrServerException, IOException;
     Employee findById(int employeeId) throws SolrServerException, IOException;
     Employee save(Employee employee) throws SolrServerException, IOException;
-    String deleteEmployeeById(String employeeId) throws SolrServerException, IOException;
+    Employee deleteEmployeeById(int employeeId) throws SolrServerException, IOException;
 }

@@ -51,7 +51,7 @@ class EmployeeRestControllerTest {
     @Test
     public void getAllShouldReturn200StatusResponse() throws Exception {
         List<Employee> employees = new ArrayList<>(Arrays.asList(mockEmployee_1, mockEmployee_2, mockEmployee_3));
-
+        System.out.println("Before starting the test");
         Mockito.when(employeeDAO.findAll()).thenReturn(employees);
 
         mockMvc
@@ -59,6 +59,8 @@ class EmployeeRestControllerTest {
                 .contentType("application/json"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
+
+        System.out.println("Commit from Tio Hiro");
     }
 
     @Test

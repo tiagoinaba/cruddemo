@@ -54,6 +54,8 @@ class EmployeeRestControllerTest {
 
         Mockito.when(employeeDAO.findAll()).thenReturn(employees);
 
+        System.out.println("Kiyoshi println");
+
         mockMvc
                 .perform(MockMvcRequestBuilders.get("/employees")
                 .contentType("application/json"))

@@ -7,6 +7,8 @@ import 'package:flutter_app/widgets/edit_employee.dart';
 import 'package:flutter_app/widgets/employee_tile.dart';
 import 'package:flutter_app/widgets/new_employee.dart';
 import 'package:http/http.dart' as http;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_app/auth.dart';
 
 class EmployeesScreen extends StatefulWidget {
   const EmployeesScreen({super.key});
@@ -21,6 +23,11 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
   List<Employee> _employeesList = [];
   String? _error;
   var _isLoading = true;
+  final User? user = Auth().currentUser;
+
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
 
   @override
   void initState() {
@@ -189,6 +196,9 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
       child: (Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          actions: [
+            IconButton(onPressed: signOut, icon: const Icon(Icons.logout))
+          ],
           centerTitle: true,
           elevation: 0,
           backgroundColor: Colors.transparent,
